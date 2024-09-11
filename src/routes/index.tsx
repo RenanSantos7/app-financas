@@ -3,13 +3,17 @@ import { View } from 'react-native';
 import { useState } from 'react';
 
 import AuthRoutes from './AuthRoutes';
+import { useAuthContext } from '../contexts/AuthContext';
 
 export default function Routes() {
-    const [signedIn, setSignedIn] = useState(false);
-	const [loading, setLoading] = useState(false);
-    return (
-        <NavigationContainer>
-        {signedIn ? <View></View> : <AuthRoutes />}
-    </NavigationContainer>
-    );
-};
+    const [loading, setLoading] = useState(false);
+    const isSignedIn = false;
+    
+    //const { isSignedIn } = useAuthContext();
+
+	return (
+		<NavigationContainer>
+			{isSignedIn ? <View></View> : <AuthRoutes />}
+		</NavigationContainer>
+	);
+}
