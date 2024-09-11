@@ -1,11 +1,11 @@
-import { StatusBar, Image } from 'react-native';
+import { StatusBar, Image, Platform } from 'react-native';
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 import { useState } from 'react';
 
 import { Form, Container } from './styles';
+import { LoginStackParams } from '../../types/types';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
-import { LoginStackParams } from '../../types/types';
 import Page from './Base';
 
 export default function Login() {
@@ -18,7 +18,7 @@ export default function Login() {
 		<Page>
 			<StatusBar backgroundColor='#F0F4FF' barStyle='dark-content' />
 
-			<Container>
+			<Container behavior={Platform.OS === 'ios' ? 'padding' : null} enabled>
 				<Image
 					source={require('../../assets/Logo.png')}
 					style={{ marginBottom: 60 }}

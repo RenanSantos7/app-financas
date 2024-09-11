@@ -20,7 +20,8 @@ export default function Button(props: ButtonProps) {
 		return (
             <OnlyTxtBtn
                 activeOpacity={0.9}
-                onPress={props.onPress}
+				onPress={props.onPress}
+				underlayColor='#6567DD10'
             >
 				<OnlyTxtBtnTxt>{props.title}</OnlyTxtBtnTxt>
 			</OnlyTxtBtn>
