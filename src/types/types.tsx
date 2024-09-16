@@ -3,6 +3,12 @@ export type LoginStackParams = {
     SignUp: undefined;
 }
 
+export type AppDrawerParams = {
+    Home: undefined;
+    Registrar: undefined;
+    Perfil: undefined;
+}
+
 export interface IUser {
     name: string;
     email: string;

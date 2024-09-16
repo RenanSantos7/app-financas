@@ -2,8 +2,8 @@ import { ReactNode, useLayoutEffect } from 'react';
 import styled from 'styled-components/native';
 import * as NavigationBar from 'expo-navigation-bar';
 
-import { useAuthContext } from '../../contexts/AuthContext';
-import Loading from '../../components/Loading'
+import { useAuthContext } from '../contexts/AuthContext';
+import Loading from './Loading'
 
 export default function Page({ children }: { children: ReactNode }) {
 	const { loading } = useAuthContext();

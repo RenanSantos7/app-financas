@@ -5,7 +5,7 @@ import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome6';
 
 import { BtBack, BtBackTxt, Container, Form } from './styles';
 import { LoginStackParams } from '../../types/types';
-import Page from './Base';
+import Page from '../../components/Page';
 import Button from '../../components/Button';
 import Input from '../../components/Input';
 import { useAuthContext } from '../../contexts/AuthContext';

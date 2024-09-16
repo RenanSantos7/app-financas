@@ -6,7 +6,7 @@ import { Form, Container } from './styles';
 import { LoginStackParams } from '../../types/types';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
-import Page from './Base';
+import Page from '../../components/Page';
 
 export default function Login() {
 	const [email, setEmail] = useState('');
