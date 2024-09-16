@@ -13,16 +13,18 @@ interface ButtonProps {
 	onPress?: (event: GestureResponderEvent) => void;
 	variant?: 'primary' | 'secondary' | 'outlined' | 'only-text';
 	color?: string;
+	disabled?: boolean;
 }
 
-export default function Button(props: ButtonProps) {
+export default function Button({ disabled = false, ...props }: ButtonProps) {
 	if (props.variant === 'only-text') {
 		return (
-            <OnlyTxtBtn
-                activeOpacity={0.9}
+			<OnlyTxtBtn
+				activeOpacity={0.9}
 				onPress={props.onPress}
 				underlayColor='#6567DD10'
-            >
+				disabled={disabled}
+			>
 				<OnlyTxtBtnTxt>{props.title}</OnlyTxtBtnTxt>
 			</OnlyTxtBtn>
 		);
@@ -30,10 +32,11 @@ export default function Button(props: ButtonProps) {
 
 	if (props.variant === 'outlined') {
 		return (
-            <OutlinedButton
-                onPress={props.onPress}
-                $color={props.color}
-            >
+			<OutlinedButton
+				onPress={props.onPress}
+				disabled={disabled}
+				$color={props.color}
+			>
 				<OutlinedButtonTxt $color={props.color}>
 					{props.title}
 				</OutlinedButtonTxt>
@@ -42,11 +45,13 @@ export default function Button(props: ButtonProps) {
 	}
 
 	return (
-        <PrimaryButton
-            activeOpacity={0.9}
-            onPress={props.onPress}
-            $color={props.color}
-        >
+		<PrimaryButton
+			activeOpacity={0.9}
+			disabled={disabled}
+			$disabled={disabled}
+			onPress={props.onPress}
+			$color={props.color}
+		>
 			<PrimaryButtonTxt>{props.title}</PrimaryButtonTxt>
 		</PrimaryButton>
 	);

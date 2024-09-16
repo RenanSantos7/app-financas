@@ -1,14 +1,14 @@
 import { StatusBar, Text, View } from 'react-native';
 import Routes from './src/routes';
 import AuthProvider from './src/contexts/AuthContext';
+import { NavigationContainer } from '@react-navigation/native';
 
 export default function App() {
 	return (
-		<AuthProvider>
-			<View style={{ flex: 1 }}>
-				<StatusBar />
+		<NavigationContainer>
+			<AuthProvider>
 				<Routes />
-			</View>
-		</AuthProvider>
+			</AuthProvider>
+		</NavigationContainer>
 	);
 }

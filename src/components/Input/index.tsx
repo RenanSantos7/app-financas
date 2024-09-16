@@ -7,7 +7,7 @@ interface InputProps {
 	setValue: Dispatch<SetStateAction<string>>;
 	placeholder: string;
     isPassword?: boolean;
-    keyboardType?: KeyboardTypeOptions
+	keyboardType?: KeyboardTypeOptions
 }
 
 export default function Input(props: InputProps) {
@@ -20,7 +20,7 @@ export default function Input(props: InputProps) {
             selectionColor='#8aa7d3'
             underlineColorAndroid='transparent'
             keyboardType={props.keyboardType || 'default'}
-            secureTextEntry={props.isPassword || false}
+			secureTextEntry={props.isPassword || false}
 		/>
 	);
 }
