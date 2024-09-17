@@ -4,6 +4,7 @@ import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome6';
 import Page from '../../components/Page';
 import { Container, Topbar, TopbarTxt } from './styles';
 import Cards from './components/Cards';
+import Transactions from './components/Transactions';
 
 interface HomeProps {
     
@@ -11,7 +12,7 @@ interface HomeProps {
 
 export default function Home(props: HomeProps) {
     return (
-        <Page>
+        <Page navBarColor='white'>
             <StatusBar backgroundColor='#F0F4FF' barStyle='dark-content' />
             <Container>
                 <Topbar>
@@ -24,6 +25,8 @@ export default function Home(props: HomeProps) {
                 </Topbar>
                 
                 <Cards />
+
+                <Transactions />
             </Container>
         </Page>
     );

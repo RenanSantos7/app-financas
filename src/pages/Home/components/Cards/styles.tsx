@@ -2,6 +2,7 @@ import styled from 'styled-components/native';
 
 export const Container = styled.ScrollView`
   padding: 14px;
+  /* border: 1px solid red; */
 `;
 
 const Card = styled.View`

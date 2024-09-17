@@ -3,14 +3,24 @@ import styled from 'styled-components/native';
 import * as NavigationBar from 'expo-navigation-bar';
 
 import { useAuthContext } from '../contexts/AuthContext';
-import Loading from './Loading'
+import Loading from './Loading';
 
-export default function Page({ children }: { children: ReactNode }) {
+interface PageProps {
+	children: ReactNode;
+	navBarColor?: string;
+	navBarBtnStyle?: 'dark' | 'light';
+}
+
+export default function Page({
+	children,
+	navBarColor = '#f0f4ff',
+	navBarBtnStyle = 'dark',
+}: PageProps) {
 	const { loading } = useAuthContext();
 
-    useLayoutEffect(() => {
-		NavigationBar.setBackgroundColorAsync('#f0f4ff');
-		NavigationBar.setButtonStyleAsync('dark');
+	useLayoutEffect(() => {
+		NavigationBar.setBackgroundColorAsync(navBarColor);
+		NavigationBar.setButtonStyleAsync(navBarBtnStyle);
 	}, []);
 
 	return (
