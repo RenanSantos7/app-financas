@@ -1,17 +1,21 @@
-import { ReactNode, useLayoutEffect } from 'react';
+import { Dispatch, ReactNode, SetStateAction, useLayoutEffect } from 'react';
 import styled from 'styled-components/native';
 import * as NavigationBar from 'expo-navigation-bar';
 
 import { useAuthContext } from '../contexts/AuthContext';
 import Loading from './Loading';
 import { StatusBar } from 'react-native';
+import ModalConfirm from './ModalConfirm';
 
 interface PageProps {
 	children: ReactNode;
 	navBarColor?: string;
 	navBarBtnStyle?: 'dark' | 'light';
 	statusBarColor?: string;
-	statusBarStyle?: 'default' | 'dark-content' | 'light-content'
+	statusBarStyle?: 'default' | 'dark-content' | 'light-content';
+	modalOpen: boolean;
+	setModalOpen: Dispatch<SetStateAction<boolean>>;
+	onConfirm: () => void;
 }
 
 export default function Page({
@@ -19,7 +23,8 @@ export default function Page({
 	navBarColor = '#f0f4ff',
 	navBarBtnStyle = 'dark',
 	statusBarColor = '#F0F4FF',
-	statusBarStyle = 'dark-content'
+	statusBarStyle = 'dark-content',
+	...props
 }: PageProps) {
 	const { loading } = useAuthContext();
 
@@ -30,11 +35,22 @@ export default function Page({
 
 	return (
 		<Container>
-			<StatusBar backgroundColor={statusBarColor} barStyle={statusBarStyle} />
+			<StatusBar
+				backgroundColor={statusBarColor}
+				barStyle={statusBarStyle}
+			/>
 
 			{children}
 
 			<Loading loading={loading} />
+
+			{props.hasOwnProperty('modalOpen') && (
+				<ModalConfirm
+					isOpened={props.modalOpen}
+					setIsOpened={props.setModalOpen}
+					onConfirm={props.onConfirm}
+				/>
+			)}
 		</Container>
 	);
 }

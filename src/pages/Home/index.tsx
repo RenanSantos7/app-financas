@@ -19,11 +19,10 @@ export default function Home() {
 			setModalOpen={setModalConfirmOpen}
 			onConfirm={signOutUser}
 		>
-			<Header
-				title='Minhas transações'
-				setModalConfirmOpen={setModalConfirmOpen}
-			/>
 			<StatusBar backgroundColor='#F0F4FF' barStyle='dark-content' />
+			
+			<Header title='Minhas transações' />
+			
 			<Container>
 				<Cards />
 				<Transactions />

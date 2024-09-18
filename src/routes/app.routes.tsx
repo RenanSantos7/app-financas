@@ -10,7 +10,14 @@ export default function AppRoutes() {
 	return (
         <Drawer.Navigator
             screenOptions={{
-                headerShown: false
+                headerShown: false,
+                drawerStyle: {
+                    backgroundColor: '#fff',
+                    paddingTop: 30
+                },
+                drawerActiveBackgroundColor: '#3B3DBF',
+                drawerActiveTintColor: 'white',
+                drawerInactiveBackgroundColor: '#eee',
             }}
         >
             <Drawer.Screen
