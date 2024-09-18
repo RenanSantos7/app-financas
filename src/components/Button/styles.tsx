@@ -35,7 +35,7 @@ export const OutlinedButton = styled.TouchableHighlight<StButtonProps>`
 		returnColor(props.$disabled, props.$color, '#C62C36')};
 `;
 
-export const OnlyTxtBtn = styled.TouchableHighlight`
+export const OnlyTxtBtn = styled.TouchableHighlight<Partial<StButtonProps>>`
 	justify-content: center;
 	align-items: center;
 	padding: 12px;
@@ -44,18 +44,17 @@ export const OnlyTxtBtn = styled.TouchableHighlight`
 
 // % Texto
 
-export const PrimaryButtonTxt = styled.Text<StButtonTxtProps>`
-	font-size: 20px;
+const ButtonTxt = styled.Text<StButtonTxtProps>`
+	font-size: 16px;
 	font-weight: 700;
+`;
+
+export const PrimaryButtonTxt = styled(ButtonTxt)`
 	color: white;
 `;
 
-export const OnlyTxtBtnTxt = styled.Text<StButtonTxtProps>`
-	font-size: 18px;
-`;
+export const OnlyTxtBtnTxt = styled(ButtonTxt)``;
 
-export const OutlinedButtonTxt = styled.Text<StButtonProps>`
-	font-size: 18px;
-	color: ${props =>
-		returnColor(props.$disabled, props.$color, '#C62C36')};
+export const OutlinedButtonTxt = styled(ButtonTxt)<Partial<StButtonProps>>`
+	color: ${props => returnColor(props.$disabled, props.$color, '#C62C36')};
 `;

@@ -1,33 +1,33 @@
 import { Text, StatusBar } from 'react-native';
-import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome6';
 
 import Page from '../../components/Page';
-import { Container, Topbar, TopbarTxt } from './styles';
+import { Container } from './styles';
 import Cards from './components/Cards';
 import Transactions from './components/Transactions';
+import { useState } from 'react';
+import { useAuthContext } from '../../contexts/AuthContext';
+import Header from '../../components/Header';
 
-interface HomeProps {
-    
-};
+export default function Home() {
+	const [modalConfirmOpen, setModalConfirmOpen] = useState(false);
+	const { signOutUser } = useAuthContext();
 
-export default function Home(props: HomeProps) {
-    return (
-        <Page navBarColor='white'>
-            <StatusBar backgroundColor='#F0F4FF' barStyle='dark-content' />
-            <Container>
-                <Topbar>
-                    <FontAwesomeIcon
-                        name='bars'
-                        size={22}
-                    />
-                    <TopbarTxt>Minhas movimentações</TopbarTxt>
-
-                </Topbar>
-                
-                <Cards />
-
-                <Transactions />
-            </Container>
-        </Page>
-    );
-};
+	return (
+		<Page
+			navBarColor='white'
+			modalOpen={modalConfirmOpen}
+			setModalOpen={setModalConfirmOpen}
+			onConfirm={signOutUser}
+		>
+			<Header
+				title='Minhas transações'
+				setModalConfirmOpen={setModalConfirmOpen}
+			/>
+			<StatusBar backgroundColor='#F0F4FF' barStyle='dark-content' />
+			<Container>
+				<Cards />
+				<Transactions />
+			</Container>
+		</Page>
+	);
+}

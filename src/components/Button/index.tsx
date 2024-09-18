@@ -47,9 +47,9 @@ export default function Button({ disabled = false, ...props }: ButtonProps) {
 	return (
 		<PrimaryButton
 			activeOpacity={0.9}
+			onPress={props.onPress}
 			disabled={disabled}
 			$disabled={disabled}
-			onPress={props.onPress}
 			$color={props.color}
 		>
 			<PrimaryButtonTxt>{props.title}</PrimaryButtonTxt>

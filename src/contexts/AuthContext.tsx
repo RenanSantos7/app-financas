@@ -16,6 +16,7 @@ interface IAuthContext {
 	isSignedIn: boolean;
 	signUpUser: (name: string, email: string, password: string) => void;
 	signInUser: (email: string, password: string) => void;
+	signOutUser: () => void;
 	loading: boolean;
 }
 
@@ -71,6 +72,13 @@ export default function AuthProvider({ children }: { children: ReactNode }) {
 		}
 	}
 
+	async function signOutUser() {
+		await AsyncStorage.clear()
+			.then(() => { 
+				setUser(null);
+			})
+	}
+
 	async function readTokenFromAsyncStorage() {
 		setLoading(true);
 		try {
@@ -101,6 +109,7 @@ export default function AuthProvider({ children }: { children: ReactNode }) {
 				isSignedIn: !!user,
 				signUpUser,
 				signInUser,
+				signOutUser,
 				loading,
 			}}
 		>
