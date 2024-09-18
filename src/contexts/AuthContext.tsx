@@ -6,31 +6,27 @@ import {
 	useState,
 } from 'react';
 import { NavigationProp, useNavigation } from '@react-navigation/native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import { IUser, LoginStackParams } from '../types/types';
 import api from '../services/api';
-import isNonEmptyObj from '../utils/isEmptyObj';
 
 interface IAuthContext {
 	user: IUser;
 	isSignedIn: boolean;
 	signUpUser: (name: string, email: string, password: string) => void;
+	signInUser: (email: string, password: string) => void;
 	loading: boolean;
 }
 
 const AuthContext = createContext<IAuthContext>(null);
 
 export default function AuthProvider({ children }: { children: ReactNode }) {
-	const [user, setUser] = useState<IUser>({
-		name: 'João das Neves',
-		email: 'joaodasneves@email.com',
-		password: '123456',
-		uid: '0',
-	});
-	const [isSignedIn, setIsSignedIn] = useState(false);
-    const [loading, setLoading] = useState(false);
-    
-    const navigation = useNavigation<NavigationProp<LoginStackParams>>();
+	const [user, setUser] = useState<IUser>(null);
+	// const [isSignedIn, setIsSignedIn] = useState(false);
+	const [loading, setLoading] = useState(false);
+
+	const navigation = useNavigation<NavigationProp<LoginStackParams>>();
 
 	async function signUpUser(name: string, email: string, password: string) {
 		setLoading(true);
@@ -45,25 +41,66 @@ export default function AuthProvider({ children }: { children: ReactNode }) {
 		} finally {
 			setTimeout(() => {
 				setLoading(false);
-            }, 1000);
-            navigation.goBack();
+			}, 1000);
+			navigation.goBack();
+		}
+	}
+
+	async function signInUser(email: string, password: string) {
+		setLoading(true);
+		try {
+			const response = await api.post('/login', {
+				email,
+				password,
+			});
+
+			const { name, id, token } = response.data;
+
+			api.defaults.headers['Authorization'] = `Bearer ${token}`;
+			await AsyncStorage.setItem('authToken', token);
+
+			setTimeout(() => {
+				setUser({ id, name, email });
+			}, 1000);
+		} catch (error) {
+			console.error('Erro ao logar: ', error);
+		} finally {
+			setTimeout(() => {
+				setLoading(false);
+			}, 300);
+		}
+	}
+
+	async function readTokenFromAsyncStorage() {
+		setLoading(true);
+		try {
+			const token = await AsyncStorage.getItem('authToken');
+			if (token) {
+				const response = await api.get('/me', {
+					headers: { Authorization: `Bearer ${token}` },
+				});
+				api.defaults.headers['Authorization'] = `Bearer ${token}`;
+				setUser({ ...response.data });
+			}
+		} catch (error) {
+			setUser(null);
+			console.error(error);
+		} finally {
+			setLoading(false);
 		}
 	}
 
 	useEffect(() => {
-		if (isNonEmptyObj(user)) {
-			setIsSignedIn(true);
-		} else {
-			setIsSignedIn(false);
-		}
-	}, [user]);
+		readTokenFromAsyncStorage();
+	}, []);
 
 	return (
 		<AuthContext.Provider
 			value={{
 				user,
-				isSignedIn,
+				isSignedIn: !!user,
 				signUpUser,
+				signInUser,
 				loading,
 			}}
 		>

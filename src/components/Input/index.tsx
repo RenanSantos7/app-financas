@@ -7,10 +7,12 @@ interface InputProps {
 	setValue: Dispatch<SetStateAction<string>>;
 	placeholder: string;
     isPassword?: boolean;
-	keyboardType?: KeyboardTypeOptions
+	keyboardType?: KeyboardTypeOptions;
+	autoCapitalize?: boolean;
+	autoFocus?: boolean;
 }
 
-export default function Input(props: InputProps) {
+export default function Input({autoCapitalize = false, ...props}: InputProps) {
 	return (
 		<StyledTextInput
 			value={props.value}
@@ -21,6 +23,8 @@ export default function Input(props: InputProps) {
             underlineColorAndroid='transparent'
             keyboardType={props.keyboardType || 'default'}
 			secureTextEntry={props.isPassword || false}
+			autoCapitalize={autoCapitalize ? 'sentences' : 'none'}
+			autoFocus={!!props.autoFocus}
 		/>
 	);
 }

@@ -23,5 +23,5 @@ const StyledView = styled.View`
     left: 0;
     align-content: center;
     justify-content: center;
-	background-color: hsla(144, 10%, 36%, 0.4);
+	background-color: hsla(0, 0%, 0%, 0.4);
 `;

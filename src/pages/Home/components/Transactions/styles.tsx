@@ -1,7 +1,7 @@
 import styled from 'styled-components/native';
 
 export const Container = styled.View`
-  height: 74%;
+  height: 70%;
   border-top-left-radius: 16px;
   border-top-right-radius: 16px;
   background-color: white;
@@ -31,6 +31,8 @@ export const Transaction = styled.View`
   padding: 16px;
   flex-direction: row;
   justify-content: space-between;
+  border-radius: 8px;
+  box-shadow: 2px 2px 8px #00000020
 `;
 
 export const TransactionWrapper = styled.View`

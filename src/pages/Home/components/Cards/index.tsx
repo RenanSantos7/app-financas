@@ -13,9 +13,7 @@ export default function Cards(props: CardsProps) {
 	return (
 		<Container
 			horizontal
-			scrollsToTop
 			showsHorizontalScrollIndicator={false}
-			snapToInterval={1}
 		>
 			<CardBalance>
 				<CardTitle>Saldo</CardTitle>

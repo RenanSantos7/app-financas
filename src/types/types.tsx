@@ -10,8 +10,10 @@ export type AppDrawerParams = {
 }
 
 export interface IUser {
+    id: string;
     name: string;
     email: string;
-    password: string;
-    uid: string;
+    balance?: number;
+    created_at?: string;
+    updated_at?: string;
 }

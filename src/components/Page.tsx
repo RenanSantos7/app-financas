@@ -4,17 +4,22 @@ import * as NavigationBar from 'expo-navigation-bar';
 
 import { useAuthContext } from '../contexts/AuthContext';
 import Loading from './Loading';
+import { StatusBar } from 'react-native';
 
 interface PageProps {
 	children: ReactNode;
 	navBarColor?: string;
 	navBarBtnStyle?: 'dark' | 'light';
+	statusBarColor?: string;
+	statusBarStyle?: 'default' | 'dark-content' | 'light-content'
 }
 
 export default function Page({
 	children,
 	navBarColor = '#f0f4ff',
 	navBarBtnStyle = 'dark',
+	statusBarColor = '#F0F4FF',
+	statusBarStyle = 'dark-content'
 }: PageProps) {
 	const { loading } = useAuthContext();
 
@@ -25,6 +30,8 @@ export default function Page({
 
 	return (
 		<Container>
+			<StatusBar backgroundColor={statusBarColor} barStyle={statusBarStyle} />
+
 			{children}
 
 			<Loading loading={loading} />

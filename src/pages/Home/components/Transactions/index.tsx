@@ -14,7 +14,6 @@ import {
     TransactionWrapper,
 } from './styles';
 import { FlatList } from 'react-native-gesture-handler';
-import { View } from 'react-native';
 import formatCurrency from '../../../../utils/formatCurrency';
 
 interface TransactionsProps {}

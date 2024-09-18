@@ -1,4 +1,4 @@
-import { StatusBar, Image, Platform } from 'react-native';
+import { Image, Platform } from 'react-native';
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 import { useState } from 'react';
 
@@ -7,23 +7,33 @@ import { LoginStackParams } from '../../types/types';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
 import Page from '../../components/Page';
+import { useAuthContext } from '../../contexts/AuthContext';
 
 export default function Login() {
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 
+	const { signInUser } = useAuthContext();
+
 	const navigation = useNavigation<NavigationProp<LoginStackParams>>();
+
+	function handleLogin() {
+		if (!!email && !!password) {
+			signInUser(email, password);
+		}
+	}
 
 	return (
 		<Page>
-			<StatusBar backgroundColor='#F0F4FF' barStyle='dark-content' />
-
-			<Container behavior={Platform.OS === 'ios' ? 'padding' : null} enabled>
+			<Container
+				behavior={Platform.OS === 'ios' ? 'padding' : null}
+				enabled
+			>
 				<Image
 					source={require('../../assets/Logo.png')}
 					style={{ marginBottom: 60 }}
 				/>
-				
+
 				<Form>
 					<Input
 						value={email}
@@ -31,16 +41,16 @@ export default function Login() {
 						placeholder='E-mail'
 						keyboardType='email-address'
 					/>
-	
+
 					<Input
 						value={password}
 						setValue={setPassword}
 						placeholder='Senha'
 						isPassword
 					/>
-	
-					<Button title='Acessar' />
-	
+
+					<Button title='Acessar' onPress={handleLogin} />
+
 					<Button
 						title='Criar conta gratuita'
 						variant='only-text'
