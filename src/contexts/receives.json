@@ -1,0 +1,42 @@
+[
+    {
+        "id": "e3b0dde6-b5a2-46f9-9f5a-dd2bda9a3bac",
+        "description": "Água de coco",
+        "value": 5,
+        "type": "despesa",
+        "date": "19/09/2024",
+        "created_at": "2024-09-19T11:49:54.297Z",
+        "updated_at": "2024-09-19T11:49:54.297Z",
+        "user_id": "241a9387-f81b-473f-ad1f-601b3139a010"
+    },
+    {
+        "id": "6f3424d1-f715-4e63-9137-532d8f833b45",
+        "description": "Milho na praia",
+        "value": 2.5,
+        "type": "despesa",
+        "date": "18/09/2024",
+        "created_at": "2024-09-19T11:49:11.125Z",
+        "updated_at": "2024-09-19T11:49:11.125Z",
+        "user_id": "241a9387-f81b-473f-ad1f-601b3139a010"
+    },
+    {
+        "id": "ed1d2f5e-c3c8-4f9a-9554-5d11ecae122b",
+        "description": "Cartão de crédito",
+        "value": 300,
+        "type": "despesa",
+        "date": "16/09/2024",
+        "created_at": "2024-09-19T11:49:00.078Z",
+        "updated_at": "2024-09-19T11:49:00.078Z",
+        "user_id": "241a9387-f81b-473f-ad1f-601b3139a010"
+    },
+    {
+        "id": "defb46c8-e988-418c-85d3-d61c99790c00",
+        "description": "Parcela 2 do cliente A",
+        "value": 500,
+        "type": "receita",
+        "date": "15/09/2024",
+        "created_at": "2024-09-19T11:48:38.633Z",
+        "updated_at": "2024-09-19T11:48:38.633Z",
+        "user_id": "241a9387-f81b-473f-ad1f-601b3139a010"
+    }
+]

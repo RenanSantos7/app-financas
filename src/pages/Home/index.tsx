@@ -1,28 +1,33 @@
-import { Text, StatusBar } from 'react-native';
+import { useEffect, useState } from 'react';
+import { useIsFocused } from '@react-navigation/native';
 
-import Page from '../../components/Page';
 import { Container } from './styles';
+import { IReceive } from '../../types/types';
 import Cards from './components/Cards';
-import Transactions from './components/Transactions';
-import { useState } from 'react';
-import { useAuthContext } from '../../contexts/AuthContext';
 import Header from '../../components/Header';
+import Page from '../../components/Page';
+import Transactions from './components/Transactions';
+import { useDataContext } from '../../contexts/DataContext';
 
 export default function Home() {
-	const [modalConfirmOpen, setModalConfirmOpen] = useState(false);
-	const { signOutUser } = useAuthContext();
+	const [date, setDate] = useState(new Date());
+
+	const isFocused = useIsFocused();
+	const { getBalance } = useDataContext();
+
+	useEffect(() => {
+		let isActive = true;
+		getBalance(date, isActive);
+
+		return () => {
+			isActive = false;
+		};
+	}, [isFocused]);
 
 	return (
-		<Page
-			navBarColor='white'
-			modalOpen={modalConfirmOpen}
-			setModalOpen={setModalConfirmOpen}
-			onConfirm={signOutUser}
-		>
-			<StatusBar backgroundColor='#F0F4FF' barStyle='dark-content' />
-			
+		<Page navBarColor='white'>
 			<Header title='Minhas transações' />
-			
+
 			<Container>
 				<Cards />
 				<Transactions />

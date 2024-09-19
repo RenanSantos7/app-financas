@@ -13,9 +13,6 @@ interface PageProps {
 	navBarBtnStyle?: 'dark' | 'light';
 	statusBarColor?: string;
 	statusBarStyle?: 'default' | 'dark-content' | 'light-content';
-	modalOpen: boolean;
-	setModalOpen: Dispatch<SetStateAction<boolean>>;
-	onConfirm: () => void;
 }
 
 export default function Page({
@@ -43,14 +40,6 @@ export default function Page({
 			{children}
 
 			<Loading loading={loading} />
-
-			{props.hasOwnProperty('modalOpen') && (
-				<ModalConfirm
-					isOpened={props.modalOpen}
-					setIsOpened={props.setModalOpen}
-					onConfirm={props.onConfirm}
-				/>
-			)}
 		</Container>
 	);
 }

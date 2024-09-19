@@ -15,6 +15,7 @@ import {
 } from './styles';
 import { FlatList } from 'react-native-gesture-handler';
 import formatCurrency from '../../../../utils/formatCurrency';
+import { useDataContext } from '../../../../contexts/DataContext';
 
 interface TransactionsProps {}
 

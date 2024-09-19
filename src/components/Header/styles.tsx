@@ -6,7 +6,6 @@ export const Topbar = styled.View`
 	flex-direction: row;
 	gap: 14px;
 	align-items: center;
-	justify-content: space-between;
 `;
 
 export const TopbarTxt = styled.Text`
