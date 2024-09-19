@@ -1,3 +1,4 @@
+import { FlatList } from 'react-native-gesture-handler';
 import FeatherIcon from 'react-native-vector-icons/Feather';
 
 import {
@@ -13,9 +14,8 @@ import {
 	TransactionValue,
     TransactionWrapper,
 } from './styles';
-import { FlatList } from 'react-native-gesture-handler';
-import formatCurrency from '../../../../utils/formatCurrency';
 import { useDataContext } from '../../../../contexts/DataContext';
+import formatCurrency from '../../../../utils/formatCurrency';
 
 interface TransactionsProps {}
 

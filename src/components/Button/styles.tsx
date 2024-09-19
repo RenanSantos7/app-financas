@@ -45,7 +45,7 @@ export const OnlyTxtBtn = styled.TouchableHighlight<Partial<StButtonProps>>`
 // % Texto
 
 const ButtonTxt = styled.Text<StButtonTxtProps>`
-	font-size: 16px;
+	font-size: 20px;
 	font-weight: 700;
 `;
 

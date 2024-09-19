@@ -1,13 +1,13 @@
 import { Text, View } from 'react-native';
 
-interface ProfileProps {
-    
-};
+import Page from '../../components/Page';
+import Header from '../../components/Header';
 
-export default function Profile(props: ProfileProps) {
+export default function Profile() {
     return (
-        <View>
+        <Page>
+            <Header title='Perfil' />
             <Text>Profile</Text>
-        </View>
+        </Page>
     );
 };

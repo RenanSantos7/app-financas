@@ -1,17 +1,18 @@
 import styled from 'styled-components/native';
 
-export const Container = styled.ScrollView`
-  padding: 14px;
+export const Container = styled.View`
+  height: 250px;
+  padding-bottom: 14px;
   /* border: 1px solid red; */
 `;
 
 const Card = styled.View`
+  margin: 14px;
+  margin-right: 0;
   width: 300px;
-  height: 160px;
   border-radius: 8px;
   padding: 14px;
   justify-content: center;
-  margin-right: 14px;
 `;
 
 export const CardTitle = styled.Text`
@@ -21,7 +22,7 @@ export const CardTitle = styled.Text`
 `;
 
 export const CardContent = styled.Text`
-  font-size: 32px;
+  font-size: 36px;
   font-weight: 300;
   color: white;
 `;
@@ -36,4 +37,5 @@ export const CardInflow = styled(Card)`
 
 export const CardOutflow = styled(Card)`
   background-color: #EF463A;
+  margin-right: 14px;
 `;
