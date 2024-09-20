@@ -5,5 +5,11 @@ export const StyledTextInput = styled.TextInput`
     width: 100%;
     padding: 14px 12px;
     font-size: 18px;
-    border-right: 4px;
+    border-radius: 4px;
+`;
+
+export const Label = styled.Text`
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 10px;
 `;

@@ -1,3 +1,4 @@
+import { format } from 'date-fns';
 import { useState } from 'react';
 import Feather from '@expo/vector-icons/Feather';
 
@@ -5,31 +6,50 @@ import { SwitchButton, BtnContainer, Container, ButtonTxt } from './styles';
 import Page from '../../components/Page';
 import Header from '../../components/Header';
 import Input from '../../components/Input';
-import { Text } from 'react-native';
+import InputNumber from '../../components/InputNumber';
 import Button from '../../components/Button';
+import { useDataContext } from '../../contexts/DataContext';
 
 export default function Register() {
 	const [description, setDescription] = useState('');
-	const [price, setPrice] = useState('');
+	const [value, setValue] = useState(0);
 	const [type, setType] = useState<'receita' | 'despesa'>('receita');
+
+	const { registerTransaction } = useDataContext();
+
+	function handleSubmit() {
+		const date = new Date();
+		const dateStr = format(date, 'dd/MM/yyyy');
+
+		if (!!description && value > 0) {
+			registerTransaction(description, value, type, dateStr);
+		} else if (!description) {
+			alert('Você deve dar uma descrição para esta movimentação.')
+		} else {
+			alert('A movimentação não pode ficar sem um valor.')
+		}
+
+		setDescription('');
+		setValue(0);
+	}
 
 	return (
 		<Page>
 			<Header title='Nova movimentação' />
 			<Container>
 				<Input
-					placeholder='Descrição'
+					label='Descrição'
+					placeholder='Uma que possa lembrar depois'
 					value={description}
 					setValue={setDescription}
 					autoFocus
 					autoCapitalize
 				/>
 
-				<Input
-					placeholder='Valor da movimentação'
-					value={price}
-					setValue={setPrice}
-					keyboardType='decimal-pad'
+				<InputNumber
+					label='Valor da movimentação'
+					value={value}
+					setValue={setValue}
 				/>
 
 				<BtnContainer>
@@ -56,9 +76,7 @@ export default function Register() {
 				<Button
 					title='Registar'
 					color='#00B94A'
-					onPress={() => {
-						alert('Registrado');
-					}}
+					onPress={handleSubmit}
 				/>
 			</Container>
 		</Page>

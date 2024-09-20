@@ -1,6 +1,8 @@
 import {
 	createContext,
+	Dispatch,
 	ReactNode,
+	SetStateAction,
 	useContext,
 	useEffect,
 	useState,
@@ -18,6 +20,7 @@ interface IAuthContext {
 	signInUser: (email: string, password: string) => void;
 	signOutUser: () => void;
 	loading: boolean;
+	setLoading: Dispatch<SetStateAction<boolean>>;
 }
 
 const AuthContext = createContext<IAuthContext>(null);
@@ -111,6 +114,7 @@ export default function AuthProvider({ children }: { children: ReactNode }) {
 				signInUser,
 				signOutUser,
 				loading,
+				setLoading
 			}}
 		>
 			{children}

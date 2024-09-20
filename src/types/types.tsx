@@ -18,7 +18,7 @@ export interface IUser {
     updated_at?: string;
 }
 
-export interface IReceive {
+export interface ITransaction {
     id: string;
     description: string;
     value: 5;

@@ -16,11 +16,12 @@ export default function Home() {
 
 	const navigation = useNavigation<DrawerNavigationProp<AppDrawerParams>>()
 	const isFocused = useIsFocused();
-	const { getBalance } = useDataContext();
+	const { getBalance, getTransactions } = useDataContext();
 
 	useEffect(() => {
 		let isActive = true;
 		getBalance(date, isActive);
+		getTransactions(date, isActive);
 
 		return () => {
 			isActive = false;
