@@ -72,6 +72,6 @@ export const BtnContainer = styled.View`
 `;
 
 export const TransactionDescription = styled.Text`
-	font-size: 16px;
+	font-size: 12px;
 	font-style: italic;
 `;

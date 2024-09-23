@@ -33,10 +33,9 @@ export default function DataProvider({ children }: { children: ReactNode }) {
 		useState<ITransaction[]>([]);
 
 	const { loading, setLoading } = useAuthContext();
-	const navigation = useNavigation();
 
 	async function getBalance(date: Date, isActive: boolean) {
-		let dateStr = format(date, 'dd/MM/yyyy');
+		const dateStr = format(date, 'dd/MM/yyyy');
 
 		const balance = await api.get('/balance', {
 			params: { date: dateStr },
@@ -52,7 +51,7 @@ export default function DataProvider({ children }: { children: ReactNode }) {
 	) {
 		setLoading(true);
 		try {
-			const response = await api.post('/receive', {
+			await api.post('/receive', {
 				description,
 				value,
 				type,
@@ -62,14 +61,13 @@ export default function DataProvider({ children }: { children: ReactNode }) {
 			console.error('Erro ao cadastrar movimentação:', error);
 		} finally {
 			setLoading(false);
-			navigation.goBack();
 		}
 	}
 
 	async function getTransactions(date: Date, isActive: boolean) {
-		let dateStr = format(date, 'dd/MM/yyyy');
+		const dateStr = format(date, 'dd/MM/yyyy');
 
-		const transactions = await api.get('/balance', {
+		const transactions = await api.get('/receives', {
 			params: { date: dateStr },
 		});
 		if (isActive) {

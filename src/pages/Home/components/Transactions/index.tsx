@@ -65,7 +65,7 @@ export default function Transactions(props: TransactionsProps) {
 							<TransactionDescription>{item.description ? item.description : 'Sem descrição'}</TransactionDescription>
 						</TransactionWrapper>
 
-						<BtnContainer>
+						{/* <BtnContainer>
 							<FeatherIcon name='edit' size={20} />
 
 							<FeatherIcon
@@ -73,7 +73,7 @@ export default function Transactions(props: TransactionsProps) {
 								size={20}
 								color='#EF463A'
 							/>
-						</BtnContainer>
+						</BtnContainer> */}
 					</Transaction>
 				)}
 				ItemSeparatorComponent={() => <Separator />}
