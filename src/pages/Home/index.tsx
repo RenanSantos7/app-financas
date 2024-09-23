@@ -37,11 +37,11 @@ export default function Home() {
 				<Transactions />
 			</Container>
 
-			<FloatingButton
+			{/* <FloatingButton
 				onPress={() => {
 					navigation.navigate('Registrar');
 				}}
-			/>
+			/> */}
 		</Page>
 	);
 }

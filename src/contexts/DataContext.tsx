@@ -70,6 +70,7 @@ export default function DataProvider({ children }: { children: ReactNode }) {
 		const transactions = await api.get('/receives', {
 			params: { date: dateStr },
 		});
+		
 		if (isActive) {
 			setTransactionsList(transactions.data);
 		}

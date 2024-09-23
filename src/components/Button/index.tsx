@@ -1,4 +1,3 @@
-import { GestureResponderEvent } from 'react-native';
 import {
 	OnlyTxtBtn,
 	OnlyTxtBtnTxt,
@@ -10,7 +9,7 @@ import {
 
 interface ButtonProps {
 	title: string;
-	onPress?: (event: GestureResponderEvent) => void;
+	onPress?: () => void;
 	variant?: 'primary' | 'secondary' | 'outlined' | 'only-text';
 	color?: string;
 	disabled?: boolean;

@@ -1,4 +1,4 @@
-import { FlatList } from 'react-native-gesture-handler';
+import { FlatList } from 'react-native';
 import FeatherIcon from 'react-native-vector-icons/Feather';
 
 import {

@@ -26,7 +26,7 @@ export default function Page({
 	const { loading } = useAuthContext();
 
 	useLayoutEffect(() => {
-		NavigationBar.setBackgroundColorAsync(navBarColor);
+		NavigationBar.setBackgroundColorAsync('white');
 		NavigationBar.setButtonStyleAsync(navBarBtnStyle);
 	}, []);
 

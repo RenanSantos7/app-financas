@@ -39,7 +39,11 @@ export default function Register() {
 
 		Alert.alert(
 			'Confirmando dados',
-			`Tipo: ${type}\n\nValor: ${formatCurrency(value)}\n`,
+			`
+			Tipo: ${type}
+			Descrição: ${description}
+			Valor: ${formatCurrency(value)}
+			`,
 			[
 				{ text: 'Cancelar', style: 'cancel' },
 				{
