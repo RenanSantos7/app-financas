@@ -1,8 +1,6 @@
-import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
 import { useEffect, useState } from 'react';
 import { useIsFocused, useNavigation } from '@react-navigation/native';
 
-import { AppRoutesParams } from '../../types/types';
 import { Container } from './styles';
 import { useDataContext } from '../../contexts/DataContext';
 import Cards from './components/Cards';
@@ -11,21 +9,19 @@ import Page from '../../components/Page';
 import Transactions from './components/Transactions';
 
 export default function Home() {
-	const [date, setDate] = useState(new Date());
 
-	const navigation = useNavigation<BottomTabNavigationProp<AppRoutesParams>>()
 	const isFocused = useIsFocused();
-	const { getBalance, getTransactions } = useDataContext();
+	const { date, getBalance, getTransactions } = useDataContext();
 
 	useEffect(() => {
 		let isActive = true;
-		getBalance(date, isActive);
-		getTransactions(date, isActive);
+		getBalance(isActive);
+		getTransactions(isActive);
 
 		return () => {
 			isActive = false;
 		};
-	}, [isFocused]);
+	}, [isFocused, date]);
 
 	return (
 		<Page navBarColor='white'>
@@ -33,7 +29,7 @@ export default function Home() {
 
 			<Container>
 				<Cards />
-				<Transactions setDate={setDate} />
+				<Transactions />
 			</Container>
 		</Page>
 	);

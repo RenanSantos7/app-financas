@@ -1,4 +1,4 @@
-import { Alert } from 'react-native';
+import { Alert, TouchableWithoutFeedback } from 'react-native';
 import {
 	Container,
 	Description,
@@ -6,28 +6,38 @@ import {
 	TypeOut,
 	TypeTxt,
 	Value,
-	Wrapper,
 } from './styles';
 import { ITransaction } from '../../../../../types/types';
 import FeatherIcon from 'react-native-vector-icons/Feather';
 import formatCurrency from '../../../../../utils/formatCurrency';
+import { useDataContext } from '../../../../../contexts/DataContext';
 
 interface TransactionProps {
 	item: ITransaction;
 }
 
 export default function Transaction(props: TransactionProps) {
+	const { deleteTransaction } = useDataContext();
+
 	return (
-		<Container
-			activeOpacity={0.8}
+		<TouchableWithoutFeedback
 			onLongPress={() => {
 				Alert.alert(
-					'Confirmação',
-					'Tem certeza de que quer deletar este registro?',
+					'Atenção',
+					'Você tem certeza de que quer deletar este registro?',
+					[
+						{ text: 'Cancelar', style: 'cancel' },
+						{
+							text: 'Continuar',
+							onPress: () => {
+								deleteTransaction(props.item.id);
+							},
+						},
+					],
 				);
 			}}
 		>
-			<Wrapper>
+			<Container>
 				{props.item.type === 'despesa' ? (
 					<TypeOut>
 						<FeatherIcon
@@ -51,7 +61,7 @@ export default function Transaction(props: TransactionProps) {
 						? props.item.description
 						: 'Sem descrição'}
 				</Description>
-			</Wrapper>
-		</Container>
+			</Container>
+		</TouchableWithoutFeedback>
 	);
 }

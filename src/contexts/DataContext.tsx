@@ -1,28 +1,32 @@
 import {
 	createContext,
+	Dispatch,
 	ReactNode,
+	SetStateAction,
 	useContext,
 	useEffect,
 	useState,
 } from 'react';
 import { format } from 'date-fns';
-import { useNavigation } from '@react-navigation/native';
 
 import { ITransaction } from '../types/types';
 import { useAuthContext } from './AuthContext';
 import api from '../services/api';
 
 interface IDataContext {
+	date: Date;
+	setDate: Dispatch<SetStateAction<Date>>;
 	balanceList: { tag: string; saldo: number }[];
 	transactionsList: ITransaction[];
-	getBalance: (date: Date, isActive: boolean) => void;
-	getTransactions: (date: Date, isActive: boolean) => void;
+	getBalance: (isActive: boolean) => void;
+	getTransactions: (isActive: boolean) => void;
 	registerTransaction: (
 		description: string,
 		value: number,
 		type: 'receita' | 'despesa',
 		date: string,
 	) => void;
+	deleteTransaction: (id: string) => void;
 }
 
 const DataContext = createContext<IDataContext>(null);
@@ -30,12 +34,13 @@ const DataContext = createContext<IDataContext>(null);
 export default function DataProvider({ children }: { children: ReactNode }) {
 	const [balanceList, setBalanceList] = useState([]);
 	const [date, setDate] = useState(new Date());
-	const [transactionsList, setTransactionsList] =
-		useState<ITransaction[]>([]);
+	const [transactionsList, setTransactionsList] = useState<ITransaction[]>(
+		[],
+	);
 
-	const { loading, setLoading } = useAuthContext();
+	const { setLoading } = useAuthContext();
 
-	async function getBalance(date: Date, isActive: boolean) {
+	async function getBalance(isActive: boolean) {
 		const dateStr = format(date, 'dd/MM/yyyy');
 
 		const balance = await api.get('/balance', {
@@ -61,30 +66,47 @@ export default function DataProvider({ children }: { children: ReactNode }) {
 		} catch (error) {
 			console.error('Erro ao cadastrar movimentação:', error);
 		} finally {
+			setDate(new Date());
 			setLoading(false);
 		}
 	}
 
-	async function getTransactions(date: Date, isActive: boolean) {
+	async function getTransactions(isActive: boolean) {
 		const dateStr = format(date, 'dd/MM/yyyy');
 
 		const transactions = await api.get('/receives', {
 			params: { date: dateStr },
 		});
-		
+
 		if (isActive) {
 			setTransactionsList(transactions.data);
+		}
+	}
+
+	async function deleteTransaction(id: string) {
+		try {
+			await api.delete('/receives/delete', {
+				params: {
+					item_id: id
+				}
+			});
+			setDate(new Date());
+		} catch (error) {
+			console.error('Erro ao deletar: ',error)
 		}
 	}
 
 	return (
 		<DataContext.Provider
 			value={{
+				date,
+				setDate,
 				balanceList,
 				transactionsList,
 				getBalance,
 				getTransactions,
 				registerTransaction,
+				deleteTransaction,
 			}}
 		>
 			{children}
