@@ -1,11 +1,11 @@
 import { Platform } from 'react-native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import { LoginStackParams } from '../types/types';
+import { AuthRoutesParams } from '../types/types';
 import Login from '../pages/LoginSignUp/Login';
 import SignUpUser from '../pages/LoginSignUp/SignUp';
 
-const Stack = createNativeStackNavigator<LoginStackParams>();
+const Stack = createNativeStackNavigator<AuthRoutesParams>();
 
 export default function AuthRoutes() {
 	return (

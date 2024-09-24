@@ -44,7 +44,7 @@ export default function Page({
 	);
 }
 
-const Container = styled.View`
+const Container = styled.SafeAreaView`
 	flex: 1;
 	background-color: #f0f4ff;
 `;

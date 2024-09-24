@@ -7,10 +7,14 @@ interface Items {
 export const TabBarContainer = styled.View`
 	width: 100%;
 	flex-direction: row;
-	padding-top: 10px;
+	padding-block: 8px;
+	border-top-width: 1px;
+	border-top-color: #ccc;
+	box-shadow: 0 0 15px #cccccc20;
+	/* border-top: 1px solid #666; */
 `;
 
-export const NavButton = styled.TouchableOpacity`
+export const NavButton = styled.Pressable`
 	justify-content: center;
 	align-items: center;
 	flex: 1;

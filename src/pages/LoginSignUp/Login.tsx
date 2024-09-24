@@ -3,7 +3,7 @@ import { NavigationProp, useNavigation } from '@react-navigation/native';
 import { useState } from 'react';
 
 import { Form, Container } from './styles';
-import { LoginStackParams } from '../../types/types';
+import { AuthRoutesParams } from '../../types/types';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
 import Page from '../../components/Page';
@@ -15,7 +15,7 @@ export default function Login() {
 
 	const { signInUser } = useAuthContext();
 
-	const navigation = useNavigation<NavigationProp<LoginStackParams>>();
+	const navigation = useNavigation<NavigationProp<AuthRoutesParams>>();
 
 	function handleLogin() {
 		if (!!email && !!password) {

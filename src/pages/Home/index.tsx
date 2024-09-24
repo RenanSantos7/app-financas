@@ -1,20 +1,19 @@
+import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
 import { useEffect, useState } from 'react';
 import { useIsFocused, useNavigation } from '@react-navigation/native';
 
+import { AppRoutesParams } from '../../types/types';
 import { Container } from './styles';
 import { useDataContext } from '../../contexts/DataContext';
 import Cards from './components/Cards';
-import FloatingButton from '../../components/FloatingButton';
 import Header from '../../components/Header';
 import Page from '../../components/Page';
 import Transactions from './components/Transactions';
-import { DrawerNavigationProp } from '@react-navigation/drawer';
-import { AppDrawerParams } from '../../types/types';
 
 export default function Home() {
 	const [date, setDate] = useState(new Date());
 
-	const navigation = useNavigation<DrawerNavigationProp<AppDrawerParams>>()
+	const navigation = useNavigation<BottomTabNavigationProp<AppRoutesParams>>()
 	const isFocused = useIsFocused();
 	const { getBalance, getTransactions } = useDataContext();
 
@@ -34,14 +33,8 @@ export default function Home() {
 
 			<Container>
 				<Cards />
-				<Transactions />
+				<Transactions setDate={setDate} />
 			</Container>
-
-			{/* <FloatingButton
-				onPress={() => {
-					navigation.navigate('Registrar');
-				}}
-			/> */}
 		</Page>
 	);
 }

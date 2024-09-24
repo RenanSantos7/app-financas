@@ -18,7 +18,7 @@ export const StyledText = styled.Text`
 
 export const BtBack = styled.TouchableOpacity`
 	width: 100%;
-	background-color: #3b3dbf;
+	background-color: #3b3dbf
 	padding: 16px 20px;
     flex-direction: row;
     align-items: center;

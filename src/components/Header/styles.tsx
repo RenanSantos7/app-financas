@@ -9,5 +9,5 @@ export const Topbar = styled.View`
 `;
 
 export const TopbarTxt = styled.Text`
-	font-size: 22px;
+	font-size: 24px;
 `;

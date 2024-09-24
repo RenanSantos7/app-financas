@@ -10,7 +10,7 @@ import {
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-import { IUser, LoginStackParams } from '../types/types';
+import { IUser, AuthRoutesParams } from '../types/types';
 import api from '../services/api';
 
 interface IAuthContext {
@@ -30,7 +30,7 @@ export default function AuthProvider({ children }: { children: ReactNode }) {
 	// const [isSignedIn, setIsSignedIn] = useState(false);
 	const [loading, setLoading] = useState(false);
 
-	const navigation = useNavigation<NavigationProp<LoginStackParams>>();
+	const navigation = useNavigation<NavigationProp<AuthRoutesParams>>();
 
 	async function signUpUser(name: string, email: string, password: string) {
 		setLoading(true);

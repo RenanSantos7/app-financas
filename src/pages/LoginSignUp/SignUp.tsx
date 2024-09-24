@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome6';
 
 import { BtBack, BtBackTxt, Container, Form } from './styles';
-import { LoginStackParams } from '../../types/types';
+import { AuthRoutesParams } from '../../types/types';
 import Page from '../../components/Page';
 import Button from '../../components/Button';
 import Input from '../../components/Input';
@@ -19,7 +19,7 @@ export default function SignUpUser() {
 
 	const { signUpUser } = useAuthContext();
 
-	const navigation = useNavigation<NavigationProp<LoginStackParams>>();
+	const navigation = useNavigation<NavigationProp<AuthRoutesParams>>();
 
 	function handleSignUp() {
 		signUpUser(name, email, password);

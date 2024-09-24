@@ -3,13 +3,13 @@ import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome6';
 import MaterialComIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
-import { AppDrawerParams } from '../types/types';
+import { AppRoutesParams } from '../types/types';
 import Home from '../pages/Home';
 import Profile from '../pages/Profile';
 import Register from '../pages/Register';
 import TabBar from '../components/TabBar';
 
-const Tab = createBottomTabNavigator<AppDrawerParams>();
+const Tab = createBottomTabNavigator<AppRoutesParams>();
 
 export default function AppRoutes() {
 	return (

@@ -2,7 +2,7 @@ import { ParamListBase, TabNavigationState, useNavigation } from '@react-navigat
 import MaterialComIcons from '@expo/vector-icons/MaterialCommunityIcons';
 
 import { ButtonAdd, NavButton, NavLabel, TabBarContainer } from './styles';
-import { AppDrawerParams } from '../../types/types';
+import { AppRoutesParams } from '../../types/types';
 import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
 
 interface TabBarProps {
@@ -14,11 +14,11 @@ interface TabBarButtonProps {
 	icon: string;
 	iconInactive?: string;
     isFocused: boolean;
-    path: "Home" | "Registrar" | "Perfil";
+    onPress: () => void;
 }
 
 export default function TabBar({state}: TabBarProps) {
-    const navigation = useNavigation<BottomTabNavigationProp<AppDrawerParams>>();
+    const navigation = useNavigation<BottomTabNavigationProp<AppRoutesParams>>();
 
 	return (
 		<TabBarContainer>
@@ -27,7 +27,7 @@ export default function TabBar({state}: TabBarProps) {
 				icon='home-variant'
 				iconInactive='home-variant-outline'
                 isFocused={state.index === 0}
-                path='Home'
+                onPress={() => {navigation.navigate('Home')}}
             />
 
             <ButtonAdd
@@ -47,7 +47,7 @@ export default function TabBar({state}: TabBarProps) {
 				icon='account-circle'
 				iconInactive='account-circle-outline'
                 isFocused={state.index === 2}
-                path='Perfil'
+                onPress={() => {navigation.navigate('Perfil')}}
 			/>
 		</TabBarContainer>
 	);
@@ -55,7 +55,6 @@ export default function TabBar({state}: TabBarProps) {
 
 function TabBarButton(props: TabBarButtonProps) {
     const color = props.isFocused ? '#6567DD' : '#ccc';
-    const navigation = useNavigation<BottomTabNavigationProp<AppDrawerParams>>();
 
 	return (
 		<NavButton>
@@ -70,9 +69,7 @@ function TabBarButton(props: TabBarButtonProps) {
 				}
 				size={32}
                 color={color}
-                onPress={() => {
-                    navigation.navigate(props.path);
-                }}
+                onPress={props.onPress}
 			/>
 			<NavLabel $color={color}>{props.title}</NavLabel>
 		</NavButton>

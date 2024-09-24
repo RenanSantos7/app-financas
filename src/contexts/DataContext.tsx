@@ -29,6 +29,7 @@ const DataContext = createContext<IDataContext>(null);
 
 export default function DataProvider({ children }: { children: ReactNode }) {
 	const [balanceList, setBalanceList] = useState([]);
+	const [date, setDate] = useState(new Date());
 	const [transactionsList, setTransactionsList] =
 		useState<ITransaction[]>([]);
 

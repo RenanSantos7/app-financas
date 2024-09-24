@@ -1,9 +1,11 @@
-export type LoginStackParams = {
+import { ColorValue } from "react-native";
+
+export type AuthRoutesParams = {
     Login: undefined;
     SignUp: undefined;
 }
 
-export type AppDrawerParams = {
+export type AppRoutesParams = {
     Home: undefined;
     Registrar: undefined;
     Perfil: undefined;
@@ -27,4 +29,24 @@ export interface ITransaction {
     created_at: string;
     updated_at: string;
     user_id: string;
+}
+
+export interface ITheme {
+    colors: {
+		primary: {
+			main: ColorValue;
+			light: ColorValue;
+		},
+		secondary: ColorValue;
+		background: {
+			main: ColorValue;
+			light: ColorValue;
+			inactive: ColorValue;
+		},
+		text: {
+			main: ColorValue;
+			title: ColorValue;
+		},
+		danger: ColorValue;
+	},
 }
