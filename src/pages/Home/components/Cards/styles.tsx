@@ -28,11 +28,11 @@ export const CardContent = styled.Text`
 `;
 
 export const CardBalance = styled(Card)`
-	background-color: #3b3dbf;
+	background-color: ${({ theme }) => theme.colors.primary.main};
 `;
 
 export const CardInflow = styled(Card)`
-	background-color: #6567dd;
+	background-color:${({ theme }) => theme.colors.success};
 `;
 
 export const CardOutflow = styled(Card)`

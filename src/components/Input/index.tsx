@@ -28,6 +28,7 @@ export default function Input({
 				value={props.value}
 				onChangeText={text => props.setValue(text)}
 				placeholder={props.placeholder}
+				placeholderTextColor={theme.colors.text.main}
 				cursorColor={theme.colors.primary.main}
 				selectionColor='#8aa7d3'
 				underlineColorAndroid='transparent'

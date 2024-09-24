@@ -37,7 +37,7 @@ export interface ITheme {
 			main: ColorValue;
 			light: ColorValue;
 		},
-		secondary: ColorValue;
+		success: ColorValue;
 		background: {
 			main: ColorValue;
 			light: ColorValue;
@@ -45,7 +45,9 @@ export interface ITheme {
 		},
 		text: {
 			main: ColorValue;
-			title: ColorValue;
+            title: ColorValue;
+            light: ColorValue;
+            placeholder: ColorValue;
 		},
 		danger: ColorValue;
 	},

@@ -9,9 +9,8 @@ export const TabBarContainer = styled.View`
 	flex-direction: row;
 	padding-block: 8px;
 	border-top-width: 1px;
-	border-top-color: #ccc;
+	border-top-color: ${({ theme }) => theme.colors.text.light};
 	box-shadow: 0 0 15px #cccccc20;
-	/* border-top: 1px solid #666; */
 `;
 
 export const NavButton = styled.Pressable`
@@ -21,7 +20,7 @@ export const NavButton = styled.Pressable`
 `;
 
 export const ButtonAdd = styled.TouchableOpacity`
-	background-color: #3b3dbf;
+	background-color: ${({ theme }) => theme.colors.primary.main};
 	position: relative;
     top: -15px;
 	padding: 16px;

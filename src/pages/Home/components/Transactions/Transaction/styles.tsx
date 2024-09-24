@@ -1,7 +1,7 @@
 import styled from 'styled-components/native';
 
 export const Container = styled.TouchableOpacity`
-	background-color: #f0f2ff;
+	background-color: ${({ theme }) => theme.colors.background.main};
 	width: 100%;
 	padding: 16px;
 	flex-direction: row;
@@ -25,7 +25,7 @@ const TransactionType = styled.View`
 `;
 
 export const TypeIn = styled(TransactionType)`
-	background-color: #6567dd;
+	background-color: ${({ theme }) => theme.colors.success};
 `;
 
 export const TypeOut = styled(TransactionType)`
@@ -41,9 +41,11 @@ export const TypeTxt = styled.Text`
 export const Value = styled.Text`
 	font-size: 24px;
 	font-weight: 400;
+	color: ${({ theme }) => theme.colors.text.title};
 `;
 
 export const Description = styled.Text`
 	font-size: 12px;
 	font-style: italic;
+	color: ${({ theme }) => theme.colors.text.main};
 `;

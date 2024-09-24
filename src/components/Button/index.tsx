@@ -1,3 +1,4 @@
+import { useTheme } from 'styled-components/native';
 import {
 	OnlyTxtBtn,
 	OnlyTxtBtnTxt,
@@ -16,12 +17,14 @@ interface ButtonProps {
 }
 
 export default function Button({ disabled = false, ...props }: ButtonProps) {
+	const theme = useTheme();
+
 	if (props.variant === 'only-text') {
 		return (
 			<OnlyTxtBtn
 				activeOpacity={0.9}
 				onPress={props.onPress}
-				underlayColor='#6567DD10'
+				underlayColor={theme.colors.primary.light}
 				disabled={disabled}
 			>
 				<OnlyTxtBtnTxt>{props.title}</OnlyTxtBtnTxt>

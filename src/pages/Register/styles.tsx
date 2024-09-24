@@ -15,13 +15,13 @@ export const BtnContainer = styled.View`
 `;
 
 export const SwitchButton = styled.Pressable<ButtonProps>`
-	flex-grow: 1;
+    flex-grow: 1;
     flex-direction: row;
     align-items: center;
     justify-content: center;
     padding: 12px;
-    background-color: ${props => props.selected ? 'white' : '#E7E7E7'};
-    border: ${props => props.selected ? '2px solid #3B3DBF' : 'none'};
+    background-color: ${props => props.selected ? 'white' : `${props.theme.colors.background.inactive}`};
+    border: ${props => props.selected ? `2px solid ${props.theme.colors.primary.main}` : 'none'};
     border-radius: 8px;
     gap: 8px;
 `;

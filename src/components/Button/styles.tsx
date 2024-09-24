@@ -21,8 +21,12 @@ export const PrimaryButton = styled.TouchableOpacity<StButtonProps>`
 	align-items: center;
 	padding: 12px;
 	border-radius: 4px;
-	background-color: ${({ $disabled, $color }) =>
-		returnColor($disabled, $color, '#3b3dbf')};
+	background-color: ${props =>
+		returnColor(
+			props.$disabled,
+			props.$color,
+			`${props.theme.colors.primary.main}`,
+		)};
 `;
 
 export const OutlinedButton = styled.TouchableHighlight<StButtonProps>`
@@ -32,7 +36,7 @@ export const OutlinedButton = styled.TouchableHighlight<StButtonProps>`
 	border-radius: 4px;
 	border-width: 1px;
 	border-color: ${props =>
-		returnColor(props.$disabled, props.$color, '#C62C36')};
+		returnColor(props.$disabled, props.$color, `${props.theme.colors.danger}`)};
 `;
 
 export const OnlyTxtBtn = styled.TouchableHighlight<Partial<StButtonProps>>`
@@ -53,8 +57,10 @@ export const PrimaryButtonTxt = styled(ButtonTxt)`
 	color: white;
 `;
 
-export const OnlyTxtBtnTxt = styled(ButtonTxt)``;
+export const OnlyTxtBtnTxt = styled(ButtonTxt)`
+	color: ${({theme}) => theme.colors.text.main},
+`;
 
 export const OutlinedButtonTxt = styled(ButtonTxt)<Partial<StButtonProps>>`
-	color: ${props => returnColor(props.$disabled, props.$color, '#C62C36')};
+	color: ${props => returnColor(props.$disabled, props.$color, `${props.theme.colors.danger}`)};
 `;

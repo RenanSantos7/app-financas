@@ -16,77 +16,14 @@ export default function AppRoutes() {
 		<Tab.Navigator
 			screenOptions={{
 				headerShown: false,
-            }}
-            tabBar={({state}) => <TabBar state={state}/>}
+			}}
+			tabBar={({ state }) => <TabBar state={state} />}
 		>
-			<Tab.Screen
-				name='Home'
-				component={Home}
-				options={{
-					title: 'Início',
-					tabBarIcon: ({ focused, color }) => {
-						if (focused) {
-							return (
-								<MaterialComIcons
-									name='home-variant'
-									size={32}
-									color={color}
-								/>
-							);
-						}
-						return (
-							<MaterialComIcons
-								name='home-variant-outline'
-								size={32}
-								color='#ccc'
-							/>
-						);
-					},
-				}}
-			/>
+			<Tab.Screen name='Home' component={Home} />
 
-			<Tab.Screen
-				name='Registrar'
-				component={Register}
-				options={{
-                    tabBarShowLabel: false,
-					tabBarIcon: ({ color }) => {
-						return (
-							<FontAwesomeIcon
-								name='circle-plus'
-								size={32}
-								color='#3A3DBF'
-							/>
-						);
-					},
-				}}
-			/>
+			<Tab.Screen name='Registrar' component={Register} />
 
-			<Tab.Screen
-				name='Perfil'
-				component={Profile}
-				options={{
-					tabBarIcon: ({ focused, color }) => {
-						if (focused) {
-							return (
-								<MaterialIcons
-									name='person'
-									size={32}
-									color={color}
-								/>
-							);
-						}
-						return (
-							<MaterialIcons
-								name='person-outline'
-								size={32}
-								color='#ccc'
-							/>
-						);
-					},
-				}}
-			/>
+			<Tab.Screen name='Perfil' component={Profile} />
 		</Tab.Navigator>
 	);
 }
-

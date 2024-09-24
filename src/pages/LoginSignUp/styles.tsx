@@ -1,7 +1,7 @@
 import styled from 'styled-components/native';
 
 export const Container = styled.KeyboardAvoidingView`
-    flex:1;
+	flex: 1;
 	justify-content: center;
 	align-items: center;
 	padding: 30px;
@@ -18,15 +18,15 @@ export const StyledText = styled.Text`
 
 export const BtBack = styled.TouchableOpacity`
 	width: 100%;
-	background-color: #3b3dbf
+	background-color: ${({ theme }) => theme.colors.primary.main};
 	padding: 16px 20px;
-    flex-direction: row;
-    align-items: center;
-    gap: 24px;
-    border-radius: 0 0 8px 8px;
+	flex-direction: row;
+	align-items: center;
+	gap: 24px;
+	border-radius: 0 0 8px 8px;
 `;
 
 export const BtBackTxt = styled.Text`
-    color: white;
-    font-size: 20px
+	color: white;
+	font-size: 20px;
 `;

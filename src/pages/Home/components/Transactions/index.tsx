@@ -10,6 +10,7 @@ import {
 import { useDataContext } from '../../../../contexts/DataContext';
 import { Dispatch, SetStateAction } from 'react';
 import Transaction from './Transaction';
+import { useTheme } from 'styled-components/native';
 
 interface TransactionsProps {
 	setDate: Dispatch<SetStateAction<Date>>;
@@ -17,6 +18,8 @@ interface TransactionsProps {
 
 export default function Transactions(props: TransactionsProps) {
 	const { transactionsList } = useDataContext();
+	const theme = useTheme();
+
 	return (
 		<Container>
 			<Header>
@@ -24,7 +27,8 @@ export default function Transactions(props: TransactionsProps) {
 				<FeatherIcon
 					name='calendar'
 					size={28}
-					onPress={() => {alert('Calendário')}}
+					onPress={() => { alert('Calendário') }}
+					color={theme.colors.text.title}
 				/>
 			</Header>
 

@@ -1,7 +1,8 @@
+import { Alert, Keyboard, TouchableWithoutFeedback } from 'react-native';
 import { format } from 'date-fns';
 import { useNavigation } from '@react-navigation/native';
 import { useState } from 'react';
-import { Alert, Keyboard, TouchableWithoutFeedback } from 'react-native';
+import { useTheme } from 'styled-components/native';
 import Feather from '@expo/vector-icons/Feather';
 
 import { SwitchButton, BtnContainer, Container, ButtonTxt } from './styles';
@@ -17,6 +18,8 @@ export default function Register() {
 	const [description, setDescription] = useState('');
 	const [value, setValue] = useState(0);
 	const [type, setType] = useState<'receita' | 'despesa'>('receita');
+
+	const theme = useTheme();
 
 	const { registerTransaction } = useDataContext();
 	const navigation = useNavigation();
@@ -110,7 +113,7 @@ export default function Register() {
 					</BtnContainer>
 					<Button
 						title='Registar'
-						color='#00B94A'
+						color={theme.colors.secondary}
 						onPress={handleSubmit}
 					/>
 				</Container>

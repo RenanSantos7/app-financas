@@ -4,6 +4,7 @@ import MaterialComIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import { ButtonAdd, NavButton, NavLabel, TabBarContainer } from './styles';
 import { AppRoutesParams } from '../../types/types';
 import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
+import { useTheme } from 'styled-components/native';
 
 interface TabBarProps {
     state: TabNavigationState<ParamListBase>;
@@ -54,7 +55,11 @@ export default function TabBar({state}: TabBarProps) {
 }
 
 function TabBarButton(props: TabBarButtonProps) {
-    const color = props.isFocused ? '#6567DD' : '#ccc';
+    const theme = useTheme();
+
+    const color = props.isFocused
+        ? `${theme.colors.primary.main}`
+        : `${theme.colors.text.light}`;
 
 	return (
 		<NavButton>
