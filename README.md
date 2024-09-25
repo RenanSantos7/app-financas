@@ -1,14 +1,12 @@
-`![Print do Banner](./public/assets/print-banner.png)`
-
 # App Finanças
 
 Este é um projeto em React desenvolvido no curso Fábrica de Aplicativos, do [Sujeito Programador](https://github.com/devfraga).
 
-<center>
+<div style=" display: flex; justifyc-content: center; align-items: center; gap: 10px;">
     <img src="./assets/Screenshot_1727286241.png" width="200">
     <img src="./assets/Screenshot_1727286220.png" width="200">
     <img src="./assets/Screenshot_1727286233.png" width="200">
-</center>
+</div>
 
 ## Tecnologias utilizadas
 
