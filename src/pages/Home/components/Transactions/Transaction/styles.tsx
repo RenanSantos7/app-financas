@@ -1,27 +1,22 @@
 import styled from 'styled-components/native';
 
-export const Container = styled.TouchableOpacity`
+export const Container = styled.View`
 	background-color: ${({ theme }) => theme.colors.background.main};
 	width: 100%;
-	padding: 16px;
-	flex-direction: row;
-	justify-content: space-between;
+	padding: ${({ theme }) => theme.sizes.spacing}px;
 	border-radius: 8px;
 	box-shadow: 2px 2px 8px #00000020;
-`;
-
-export const Wrapper = styled.View`
 	gap: 8px;
 `;
 
 const TransactionType = styled.View`
 	align-self: flex-start;
-	width: 90px;
-	flex-direction: row;
 	align-items: center;
+	width: 75px;
+	flex-direction: row;
 	gap: 2px;
 	padding: 4px;
-	border-radius: 4px;
+	border-radius: ${({ theme }) => theme.sizes.borderRadius.small}px;
 `;
 
 export const TypeIn = styled(TransactionType)`
@@ -34,18 +29,18 @@ export const TypeOut = styled(TransactionType)`
 
 export const TypeTxt = styled.Text`
 	color: white;
-	font-size: 14px;
+	font-size: ${({ theme }) => theme.sizes.font.small}px;
 	font-style: italic;
 `;
 
 export const Value = styled.Text`
-	font-size: 24px;
+	font-size: ${({ theme }) => theme.sizes.font.title2}px;
 	font-weight: 400;
 	color: ${({ theme }) => theme.colors.text.title};
 `;
 
 export const Description = styled.Text`
-	font-size: 12px;
+	font-size: ${({ theme }) => theme.sizes.font.small}px;
 	font-style: italic;
 	color: ${({ theme }) => theme.colors.text.main};
 `;

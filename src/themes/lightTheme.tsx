@@ -1,6 +1,6 @@
-import { ITheme } from '../types/types';
+import { IColorTheme } from '../types/types';
 
-export const lightTheme: ITheme = {
+export const lightTheme: IColorTheme = {
 	colors: {
 		primary: {
 			main: '#3b3dbf',

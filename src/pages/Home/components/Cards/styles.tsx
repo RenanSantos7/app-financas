@@ -2,27 +2,26 @@ import styled from 'styled-components/native';
 
 export const Container = styled.View`
 	height: 250px;
-	padding-bottom: 14px;
-	/* border: 1px solid red; */
+	padding-bottom: ${({ theme }) => theme.sizes.spacing}px;
 `;
 
 const Card = styled.View`
-	margin: 14px;
+	margin: ${({ theme }) => theme.sizes.spacing}px;
 	margin-right: 0;
 	width: 300px;
-	border-radius: 8px;
-	padding: 14px;
+	border-radius: ${({ theme }) => theme.sizes.borderRadius.main}px;
+	padding: ${({ theme }) => theme.sizes.spacing}px;
 	justify-content: center;
 `;
 
 export const CardTitle = styled.Text`
-	font-size: 18px;
+	font-size: ${({ theme }) => theme.sizes.font.title3}px;
 	font-weight: 700;
 	color: white;
 `;
 
 export const CardContent = styled.Text`
-	font-size: 36px;
+	font-size: ${({ theme }) => theme.sizes.font.max}px;
 	font-weight: 300;
 	color: #fff;
 `;
@@ -37,5 +36,5 @@ export const CardInflow = styled(Card)`
 
 export const CardOutflow = styled(Card)`
 	background-color: ${({ theme }) => theme.colors.danger};
-	margin-right: 14px;
+	margin-right: ${({ theme }) => theme.sizes.spacing}px;
 `;

@@ -2,13 +2,13 @@ import styled from 'styled-components/native';
 
 export const Topbar = styled.View`
 	width: 100%;
-	padding: 14px;
+	padding: ${({ theme }) => theme.sizes.spacing}px;
 	flex-direction: row;
-	gap: 14px;
+	gap: ${({ theme }) => theme.sizes.spacing}px;
 	align-items: center;
 `;
 
 export const TopbarTxt = styled.Text`
-	font-size: 24px;
-	color: ${({ theme }) => theme.colors.text.title}
+	font-size: ${({ theme }) => theme.sizes.font.title1}px;
+	color: ${({ theme }) => theme.colors.text.title}px;
 `;

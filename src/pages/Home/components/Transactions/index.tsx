@@ -13,7 +13,7 @@ import Transaction from './Transaction';
 import { useTheme } from 'styled-components/native';
 
 interface TransactionsProps {
-	setDate: Dispatch<SetStateAction<Date>>;
+	// setDate: Dispatch<SetStateAction<Date>>;
 }
 
 export default function Transactions(props: TransactionsProps) {
@@ -26,7 +26,7 @@ export default function Transactions(props: TransactionsProps) {
 				<HeaderTxt>Últimas movimentações</HeaderTxt>
 				<FeatherIcon
 					name='calendar'
-					size={28}
+					size={24}
 					onPress={() => { alert('Calendário') }}
 					color={theme.colors.text.title}
 				/>

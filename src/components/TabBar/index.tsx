@@ -1,4 +1,8 @@
-import { ParamListBase, TabNavigationState, useNavigation } from '@react-navigation/native';
+import {
+	ParamListBase,
+	TabNavigationState,
+	useNavigation,
+} from '@react-navigation/native';
 import MaterialComIcons from '@expo/vector-icons/MaterialCommunityIcons';
 
 import { ButtonAdd, NavButton, NavLabel, TabBarContainer } from './styles';
@@ -7,62 +11,63 @@ import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
 import { useTheme } from 'styled-components/native';
 
 interface TabBarProps {
-    state: TabNavigationState<ParamListBase>;
+	state: TabNavigationState<ParamListBase>;
 }
 
 interface TabBarButtonProps {
-    title?: string;
+	title?: string;
 	icon: string;
 	iconInactive?: string;
-    isFocused: boolean;
-    onPress: () => void;
+	isFocused: boolean;
+	onPress: () => void;
 }
 
-export default function TabBar({state}: TabBarProps) {
-    const navigation = useNavigation<BottomTabNavigationProp<AppRoutesParams>>();
+export default function TabBar({ state }: TabBarProps) {
+	const navigation =
+		useNavigation<BottomTabNavigationProp<AppRoutesParams>>();
 
 	return (
 		<TabBarContainer>
-            <TabBarButton
-                title='Início'
+			<TabBarButton
+				title='Início'
 				icon='home-variant'
 				iconInactive='home-variant-outline'
-                isFocused={state.index === 0}
-                onPress={() => {navigation.navigate('Home')}}
-            />
+				isFocused={state.index === 0}
+				onPress={() => {
+					navigation.navigate('Home');
+				}}
+			/>
 
-            <ButtonAdd
-                onPress={() => {
-                    navigation.navigate('Registrar')
-                }}
-            >
-                <MaterialComIcons
-                    name='plus'
-                    color='white'
-                    size={34}
-                />
-            </ButtonAdd>
-            
-            <TabBarButton
-                title='Perfil'
+			<ButtonAdd
+				onPress={() => {
+					navigation.navigate('Registrar');
+				}}
+			>
+				<MaterialComIcons name='plus' color='white' size={30} />
+			</ButtonAdd>
+
+			<TabBarButton
+				title='Perfil'
 				icon='account-circle'
 				iconInactive='account-circle-outline'
-                isFocused={state.index === 2}
-                onPress={() => {navigation.navigate('Perfil')}}
+				isFocused={state.index === 2}
+				onPress={() => {
+					navigation.navigate('Perfil');
+				}}
 			/>
 		</TabBarContainer>
 	);
 }
 
 function TabBarButton(props: TabBarButtonProps) {
-    const theme = useTheme();
+	const theme = useTheme();
 
-    const color = props.isFocused
-        ? `${theme.colors.primary.main}`
-        : `${theme.colors.text.light}`;
+	const color = props.isFocused
+		? `${theme.colors.primary.main}`
+		: `${theme.colors.text.light}`;
 
 	return (
-		<NavButton>
+		<NavButton onPress={props.onPress}>
 			<MaterialComIcons
 				//@ts-expect-error
 				name={
@@ -72,9 +77,8 @@ function TabBarButton(props: TabBarButtonProps) {
 							? props.iconInactive
 							: props.icon
 				}
-				size={32}
-                color={color}
-                onPress={props.onPress}
+				size={28}
+				color={color}
 			/>
 			<NavLabel $color={color}>{props.title}</NavLabel>
 		</NavButton>

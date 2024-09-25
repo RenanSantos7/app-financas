@@ -1,5 +1,6 @@
-import { Dispatch, SetStateAction } from 'react';
+import { Dispatch, SetStateAction, useEffect } from 'react';
 import { View, Text } from 'react-native';
+import { useTheme } from 'styled-components/native';
 import CurrencyInput from 'react-native-currency-input';
 
 import styles from './styles';
@@ -13,9 +14,21 @@ interface InputProps {
 }
 
 export default function InputNumber(props: InputProps) {
+	const theme = useTheme();
+
+	useEffect(() => {
+		console.log(theme);
+	}, [theme]);
+
 	return (
 		<View>
-			{props.label && (<Text style={styles.label}>{props.label}</Text>)}
+			{props.label && (
+				<Text
+					style={[{ fontSize: theme.sizes.font.body }, styles.label]}
+				>
+					{props.label}
+				</Text>
+			)}
 			<CurrencyInput
 				value={props.value}
 				onChangeValue={props.setValue}
@@ -26,9 +39,13 @@ export default function InputNumber(props: InputProps) {
 				cursorColor='#3B3DBF'
 				selectionColor='#8aa7d3'
 				autoFocus={!!props.autoFocus}
-				style={styles.input}
+				style={[
+					{
+						fontSize: theme.sizes.font.body,
+					},
+					styles.input,
+				]}
 			/>
 		</View>
 	);
 }
-

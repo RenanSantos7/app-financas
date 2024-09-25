@@ -31,7 +31,7 @@ export interface ITransaction {
     user_id: string;
 }
 
-export interface ITheme {
+export interface IColorTheme {
     colors: {
 		primary: {
 			main: ColorValue;
@@ -51,4 +51,17 @@ export interface ITheme {
 		},
 		danger: ColorValue;
 	},
+}
+
+export interface ITheme extends IColorTheme {
+    sizes: {
+        font: {
+            body: number;
+            title1: number;
+            title2?: number;
+            title3?: number;
+            max: number;
+        },
+        spacing: number;
+    }
 }
