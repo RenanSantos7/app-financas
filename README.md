@@ -13,6 +13,8 @@ Este é um projeto em React desenvolvido no curso Fábrica de Aplicativos, do [S
 - [React Native](https://reactnative.dev)
 - [TypeScript](https://www.typescriptlang.org/)
 - [Styled Components](https://styled-components.com/)
+- [React Navigation](https://reactnavigation.org/)
+- [React Native Calendars](https://wix.github.io/react-native-calendars/docs/Intro)
 
 ## Como rodar localmente
 
@@ -23,7 +25,7 @@ No caso, primeiro você precisará baixar o [Android Studio]() no seu PC e rode 
 Então, clone este repositório usando:
 
 ```node
-git clone https://github.com/RenanSantos7/ola-mundo-react-router.git
+git clone https://github.com/RenanSantos7/app-financas.git
 ```
 
 Você também vai precisar clonar [esse repositório](https://github.com/devfraga/backend-financas) repositório e seguir as instruções contidas nele para rodar o backend da aplicação.
@@ -31,10 +33,10 @@ Você também vai precisar clonar [esse repositório](https://github.com/devfrag
 Agora navegue para dentro da pasta em que o repositório foi clonado e instale as dependências:
 
 ```node
-cd ./nome-do-repositorio
+cd ./app-financas
 npm i
 // ou
-cd ./nome-do-repositorio
+cd ./app-financas
 yarn
 ```
 
