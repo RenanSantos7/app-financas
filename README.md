@@ -1,11 +1,14 @@
 `![Print do Banner](./public/assets/print-banner.png)`
 
-# README
+# App Finanças
 
-Este é um projeto em React desenvolvido no curso 
+Este é um projeto em React desenvolvido no curso Fábrica de Aplicativos, do [Sujeito Programador](https://github.com/devfraga).
 
->[!NOTE]
->[Repositório do curso](https://github.com/alura-cursos/3652-react-forms)
+<center>
+    <img src="./assets/Screenshot_1727286241.png" width="200">
+    <img src="./assets/Screenshot_1727286220.png" width="200">
+    <img src="./assets/Screenshot_1727286233.png" width="200">
+</center>
 
 ## Tecnologias utilizadas
 
@@ -24,6 +27,8 @@ Então, clone este repositório usando:
 ```node
 git clone https://github.com/RenanSantos7/ola-mundo-react-router.git
 ```
+
+Você também vai precisar clonar [esse repositório](https://github.com/devfraga/backend-financas) repositório e seguir as instruções contidas nele para rodar o backend da aplicação.
 
 Agora navegue para dentro da pasta em que o repositório foi clonado e instale as dependências:
 

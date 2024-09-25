@@ -1,18 +1,18 @@
 {
   "expo": {
-    "name": "app-financas",
+    "name": "Finanças",
     "slug": "app-financas",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./src/assets/Logo@2x.png",
-    "userInterfaceStyle": "light",
+    "userInterfaceStyle": "automatic",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#f0f4ff"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": false
     },
     "android": {
       "adaptiveIcon": {
@@ -21,7 +21,7 @@
       }
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/icon.png"
     }
   }
 }
