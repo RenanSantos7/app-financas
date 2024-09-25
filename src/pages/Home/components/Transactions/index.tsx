@@ -1,23 +1,16 @@
-import { Alert, FlatList, Pressable, Text, View } from 'react-native';
+import { Alert, FlatList, Modal, Pressable, Text, View } from 'react-native';
+import { Dispatch, SetStateAction, useState } from 'react';
+import { useTheme } from 'styled-components/native';
 import FeatherIcon from 'react-native-vector-icons/Feather';
 
-import {
-	Container,
-	Header,
-	HeaderTxt,
-	Separator,
-} from './styles';
+import { Container, Header, HeaderTxt, Separator } from './styles';
 import { useDataContext } from '../../../../contexts/DataContext';
-import { Dispatch, SetStateAction } from 'react';
+import CalendarFilter from '../Calendar';
 import Transaction from './Transaction';
-import { useTheme } from 'styled-components/native';
 
-interface TransactionsProps {
-	// setDate: Dispatch<SetStateAction<Date>>;
-}
-
-export default function Transactions(props: TransactionsProps) {
-	const { transactionsList } = useDataContext();
+export default function Transactions() {
+	const [modalVisible, setModalVisible] = useState(false);
+	const { transactionsList, setDate } = useDataContext();
 	const theme = useTheme();
 
 	return (
@@ -27,7 +20,9 @@ export default function Transactions(props: TransactionsProps) {
 				<FeatherIcon
 					name='calendar'
 					size={24}
-					onPress={() => { alert('Calendário') }}
+					onPress={() => {
+						setModalVisible(true);
+					}}
 					color={theme.colors.text.title}
 				/>
 			</Header>
@@ -38,6 +33,14 @@ export default function Transactions(props: TransactionsProps) {
 				ItemSeparatorComponent={() => <Separator />}
 				style={{ marginTop: 14, marginBottom: 60 }}
 				showsVerticalScrollIndicator={false}
+			/>
+
+			<CalendarFilter
+				visible={modalVisible}
+				setVisible={setModalVisible}
+				onFilter={(date: Date) => {
+					setDate(date);
+				}}
 			/>
 		</Container>
 	);

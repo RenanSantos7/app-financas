@@ -5,6 +5,7 @@ import {
 	SetStateAction,
 	useContext,
 	useEffect,
+	useMemo,
 	useState,
 } from 'react';
 import { format } from 'date-fns';
@@ -38,11 +39,15 @@ export default function DataProvider({ children }: { children: ReactNode }) {
 		[],
 	);
 
+	const dateStr = useMemo(() => {
+		// * para corrigir eventuais problemas de timezone
+		const rightDate = date.valueOf() + date.getTimezoneOffset() * 60000;
+		return format(rightDate, 'dd/MM/yyyy');
+	}, [date])
+
 	const { setLoading } = useAuthContext();
 
 	async function getBalance(isActive: boolean) {
-		const dateStr = format(date, 'dd/MM/yyyy');
-
 		const balance = await api.get('/balance', {
 			params: { date: dateStr },
 		});
@@ -72,8 +77,6 @@ export default function DataProvider({ children }: { children: ReactNode }) {
 	}
 
 	async function getTransactions(isActive: boolean) {
-		const dateStr = format(date, 'dd/MM/yyyy');
-
 		const transactions = await api.get('/receives', {
 			params: { date: dateStr },
 		});

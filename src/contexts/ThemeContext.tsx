@@ -38,8 +38,9 @@ export default function AppThemeProvider({
 			},
 			spacing: 14,
 			borderRadius: {
+				large: 16, 
 				main: 8,
-				small: 4
+				small: 4,
 			}
 		},
 		...colorTheme
