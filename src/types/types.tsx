@@ -58,10 +58,15 @@ export interface ITheme extends IColorTheme {
         font: {
             body: number;
             title1: number;
-            title2?: number;
-            title3?: number;
+            title2: number;
+            title3: number;
             max: number;
+            small: number;
         },
-        spacing: number;
+        spacing: number,
+        borderRadius: {
+            main: number,
+            small: number
+        },
     }
 }

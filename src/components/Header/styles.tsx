@@ -10,5 +10,5 @@ export const Topbar = styled.View`
 
 export const TopbarTxt = styled.Text`
 	font-size: ${({ theme }) => theme.sizes.font.title1}px;
-	color: ${({ theme }) => theme.colors.text.title}px;
+	color: ${({ theme }) => theme.colors.text.title};
 `;

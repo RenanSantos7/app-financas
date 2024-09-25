@@ -31,7 +31,8 @@ export default function AppThemeProvider({
 			font: {
 				body: 16,
 				title1: 24,
-				title2: 18,
+				title2: 22,
+				title3: 18,
 				max: 36,
 				small: 12
 			},

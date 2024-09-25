@@ -47,7 +47,7 @@ export const OnlyTxtBtn = styled.TouchableHighlight<Partial<StButtonProps>>`
 	justify-content: center;
 	align-items: center;
 	padding: 12px;
-	border-radius: 4px;
+	border-radius: ${({ theme }) => theme.sizes.borderRadius.main}px;
 `;
 
 // % Texto
