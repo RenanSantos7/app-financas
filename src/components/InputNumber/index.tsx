@@ -16,10 +16,6 @@ interface InputProps {
 export default function InputNumber(props: InputProps) {
 	const theme = useTheme();
 
-	useEffect(() => {
-		console.log(theme);
-	}, [theme]);
-
 	return (
 		<View>
 			{props.label && (

@@ -1,7 +1,4 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome6';
-import MaterialComIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 import { AppRoutesParams } from '../types/types';
 import Home from '../pages/Home';
